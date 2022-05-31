@@ -18,7 +18,7 @@ int main()
 
     for (int i = n - 1; i >= 0; i--)
     {
-        result = k / a[i];
+        result += k / a[i];
         k %= a[i];
     }
 

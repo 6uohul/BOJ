@@ -10,7 +10,7 @@
       "stopAtEntry": true,
       "cwd": "${fileDirname}",
       "environment": [],
-      "externalConsole": false,
+      "externalConsole": true,
       "MIMode": "lldb",
       "preLaunchTask": "C/C++: g++ 활성 파일 빌드"
     },
@@ -18,16 +18,12 @@
       "name": "C/C++ Runner: Debug Session",
       "type": "lldb",
       "request": "launch",
-      "args": [
-        ""
-      ],
+      "args": [],
       "stopAtEntry": true,
+      "externalConsole": false,
       "cwd": "/Users/inyoung/Documents/BOJ/BOJ-1",
-      "environment": [],
       "program": "/Users/inyoung/Documents/BOJ/BOJ-1/build/Debug/outDebug",
-      "internalConsoleOptions": "openOnSessionStart",
-      "MIMode": "gdb",
-      "externalConsole": false
+      "MIMode": "lldb"
     }
   ]
 }

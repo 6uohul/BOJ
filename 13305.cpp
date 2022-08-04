@@ -14,8 +14,6 @@
 
 using namespace std;
 
-long long cost = 0;
-
 int main()
 {
     long long N; // r은 도로의 길이 배열, c는 도시의 리터당 기름 가격 배열
@@ -37,22 +35,20 @@ int main()
         c.push_back(cost);
     }
 
-    cost = c[0] * r[0]; //처음 출발할 때 기름 충전
-
-    long long int cnt = 1;
-    while (cnt + 1 != N)
+    for (int i = 0; i < N; i++)
     {
-        if (c[cnt] < c[cnt + 1])
-        { //뒤의 기름 가격이 더 싸면
-            cost += c[cnt] * (r[cnt] + r[cnt + 1]);
-            cnt++;
-        }
-        else
+        if (c[i] < c[i + 1])
         {
-            cost += c[cnt] * r[cnt];
+            c[i + 1] = c[i];
         }
-        cnt++;
     }
 
-    cout << cost;
+    long long result = 0;
+
+    for (int i = 0; i < N - 1; i++)
+    {
+        result += r[i] * c[i];
+    }
+
+    cout << result;
 }

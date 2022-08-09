@@ -7,7 +7,6 @@
 */
 
 #include <iostream>
-#include <stack>
 #include <queue>
 #define MAX 1001
 
@@ -17,8 +16,9 @@ int n, m, v;
 int visited[MAX] = {false};
 int graph[MAX][MAX] = {
     0,
-}; // graph[][] = 간선 (0또는 1)
+}; // graph[][] = 간선 ( 1이면 연결 )
 
+// DFS 탐색
 void DFS(int start, int s)
 {
     visited[start] = true;
@@ -37,6 +37,35 @@ void DFS(int start, int s)
     }
 }
 
+void BFS(int start, int s)
+{
+    queue<int> q;
+    q.push(start);
+    visited[start] = true;
+
+    while (!q.empty())
+    {
+        int V = q.front();
+        cout << V << " ";
+        q.pop();
+        for (int i = 1; i <= n; i++)
+        {
+            if (visited[i] == true || graph[V][i] == 0)
+                continue;
+            q.push(i);
+            visited[i] = true;
+        }
+    }
+}
+
+void clean()
+{
+    for (int i = 0; i <= n; i++)
+    {
+        visited[i] = false;
+    }
+}
+
 int main()
 {
     cin >> n >> m >> v;
@@ -48,5 +77,9 @@ int main()
         graph[a][b] = graph[b][a] = 1;
     }
 
-    DFS(v, n);
+    DFS(v, n); // dfs 탐색
+    clean();
+    cout << "\n";
+
+    BFS(v, n); // bfs 탐색
 }
